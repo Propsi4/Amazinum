@@ -13,9 +13,21 @@ This is the documentation for the homework. The task was to make a simple web ap
 First of all you have to install the [Docker](https://www.docker.com/) on your machine.
 
 To launch the app, run the following command:
+### CPU-bound app
 ```bash
 docker build -t <image_name> .
-docker run -p <EXTERNAL_PORT>:7000 --gpus {all|devices=NAMES} <image_name>
+docker run -p <EXTERNAL_PORT>:7000 <image_name>
+```
+
+### GPU-bound app
+Requirements:
+
+- CUDA compatible GPU
+- installed [CUDA](https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html)
+- installed [NVIDIA container tookit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
+```bash
+docker build -t <image_name> .
+docker run --gpus all -p <EXTERNAL_PORT>:7000 <image_name>
 ```
 
 ## Usage:
